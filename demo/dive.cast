@@ -1,0 +1,12 @@
+{"version": 2, "width": 151, "height": 41, "timestamp": 1747237720, "env": {"SHELL": "/bin/bash", "TERM": "xterm-256color"}}
+[0.362868, "o", "\u001b[0;32m@DenisZm \u001b[0m➜ \u001b[1;34m/workspaces/devops101/demo \u001b[0;36m(\u001b[1;31mmain\u001b[0;36m) \u001b[0m$ "]
+[1.614248, "o", "dive --ci --lowestEfficiency=0.9 ghcr.io/deniszm/d"]
+[1.61864, "o", "emo:1.0.0"]
+[2.334213, "o", "\r\n"]
+[2.338613, "o", "  Using default CI config\r\n"]
+[2.339143, "o", "\u001b[1mImage Source: \u001b[0mdocker://ghcr.io/deniszm/demo:1.0.0\r\n\u001b[1mExtracting image from docker-engine...\u001b[0m (this can take a while for large images)\r\n"]
+[2.426607, "o", "\u001b[1mAnalyzing image...\u001b[0m\r\n"]
+[2.426775, "o", "  efficiency: 100.0000 %\r\n  wastedBytes: 0 bytes (0 B)\r\n  userWastedPercent: NaN %\r\n"]
+[2.426909, "o", "\u001b[1mInefficient Files:\u001b[0m\r\nCount  Wasted Space  File Path\r\nNone\r\n\u001b[1mResults:\u001b[0m\r\n  PASS: highestUserWastedPercent\r\n  \u001b[34mSKIP\u001b[0m: highestWastedBytes: rule disabled\r\n  PASS: lowestEfficiency\r\n\u001b[32mResult:PASS [Total:3] [Passed:2] [Failed:0] [Warn:0] [Skipped:1]\u001b[0m\r\n\r\n"]
+[2.439217, "o", "\u001b[0;32m@DenisZm \u001b[0m➜ \u001b[1;34m/workspaces/devops101/demo \u001b[0;36m(\u001b[1;31mmain\u001b[0;36m) \u001b[0m$ "]
+[6.130815, "o", "exit\r\n"]

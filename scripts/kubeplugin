@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# Kubernetes resource usage plugin
+# This script shows CPU and Memory usage for Kubernetes resources
+#
+# INSTALLATION AS KUBECTL PLUGIN:
+# 1. Rename this file to: kubectl-kubeplugin
+#    mv kubeplugin kubectl-kubeplugin
+# 
+# 2. Make it executable:
+#    chmod +x kubectl-kubeplugin
+#
+# 3. Move to a directory in your PATH (e.g., /usr/local/bin):
+#    sudo mv kubectl-kubeplugin /usr/local/bin/
+#    OR add current directory to PATH:
+#    export PATH=$PATH:$(pwd)
+#
+# 4. Verify installation:
+#    kubectl plugin list
+#
+# 5. Use as kubectl plugin:
+#    kubectl kubeplugin nodes
+#    kubectl kubeplugin pods kube-system
+#
+# DIRECT USAGE:
+# Usage: kubeplugin <resource_type> [namespace]
+# Example: kubeplugin nodes
+#          kubeplugin pods kube-system
+
+# Check if required arguments are provided
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 <resource_type> [namespace]"
+    echo "Example: $0 nodes"
+    echo "         $0 pods kube-system"
+    exit 1
+fi
+
+# Define command-line arguments
+RESOURCE_TYPE=$1
+if [ $# -eq 2 ]; then
+    NAMESPACE=$2
+else
+    NAMESPACE="default"
+fi
+
+echo "Resource, Namespace, Name, CPU, Memory"
+
+# Retrieve resource usage statistics from Kubernetes
+kubectl top $RESOURCE_TYPE -n $NAMESPACE | tail -n +2 | while read line
+do
+  # Extract CPU and memory usage from the output
+  NAME=$(echo $line | awk '{print $1}')
+  CPU=$(echo $line | awk '{print $2}')
+  MEMORY=$(echo $line | awk '{print $3}')
+
+  # Output the statistics to the console
+  echo "$RESOURCE_TYPE, $NAMESPACE, $NAME, $CPU, $MEMORY"
+done
